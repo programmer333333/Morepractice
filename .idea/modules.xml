@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Morepractice.iml" filepath="$PROJECT_DIR$/Morepractice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/newStringCalculator.iml" filepath="$PROJECT_DIR$/newStringCalculator.iml" />
     </modules>
   </component>
 </project>

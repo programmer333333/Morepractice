@@ -1,80 +1,97 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Stringcalculator {
+    static String result;
+    static Scanner sc;
+    static String input;
+static String[] str1;
+    static String[] str;
+
     public static void main(String[] args) throws Exception {
-        String result = "";
-
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter expression: ");
-        String input = sc.nextLine();
-        input = input.replace("\"", "");
-
-
-        if (result.toCharArray().length > 40) {
-            System.out.println("\"" + result + "..." + "\"");
-        }
-
-
-        String[] str = input.split("[+ \\- * /]");
-
-
-        for (int i = 0; i < str.length; i++) {
-            if (str[i].toCharArray().length > 10) {
-                throw new Exception("Enter from 1 to 10 symbols");
-            }
-        }
+        initialization();
 
 
         if (input.contains("+")) {
-            result = str[0] + str[str.length - 1];
-            System.out.println("\"" + result + "\"");
-        }
-
+            addition();}
 
         else if (input.contains("-")) {
-            List<String> strArr = new ArrayList<>(List.of(str));
-            while (strArr.remove(str[str.length - 1])) ;
-            result = String.join(" ", strArr);
-            System.out.println("\"" + result + "\"");
-        }
+            subtraction();}
+
+        else if (input.contains("*")) {
+            multiplication();}
+
+        else if (input.contains("/")) {
+            division();}
+
+        else {throw new Exception("Incorrect expression!!!");}
+
+        if (result.toCharArray().length > 40) {
+            System.out.println("\"" + result + "..." + "\"");}
+
+        else {System.out.println("\"" + result + "\"");}
+    }
 
 
-        else  if (input.contains("*")) {
-            int number = Integer.parseInt(str[str.length - 1]);
+    public static void initialization() throws Exception {
+        result = "";
+        sc = new Scanner(System.in);
+        System.out.println("Enter expression: ");
+        input = sc.nextLine();
+        input = input.replace("\"", "");
+    }
 
-            if (number > 10) {
-                throw new Exception("Enter numbers from 1 to 10 inclusive");
-            }
+    public static void lengthString() throws Exception {
 
-            for (int i = 0; i < number; i++) {
-                result += str[0];
-            }
-
-            if (result.toCharArray().length > 40) {
-                System.out.println("\"" + result + "..." + "\"");
-            } else {
-                System.out.print("\"" + result + "\"");
-            }
-        }
-
-            else if (input.contains("/")) {
-                int length = str[0].toCharArray().length;
-                int num = Integer.parseInt(str[str.length - 1]);
-                int res = length / num;
-                if (res > 10) {
-                    throw new Exception("Enter numbers from 1 to 10 inclusive");
-                }
-
-                result = str[0].substring(0, length / num);
-                System.out.println("\"" + result + "\"");
-            }
-
-            else {throw new Exception("Incorrect expression!!!");}
-        }
+            if (str[0].toCharArray().length > 10 || str[1].toCharArray().length > 10)  {
+                throw new Exception("Enter from 1 to 10 symbols");}
 
     }
+
+
+    public static void addition() throws Exception{
+        str = input.split("\\+");
+        lengthString();
+        result = str[0] + str[str.length - 1];}
+
+
+    public static void subtraction() throws Exception{
+        str = input.split("-");
+        lengthString();
+        int index = str[0].indexOf(str[1]);
+        if (index == -1) {result = str[0];}
+        else {result = str[0].substring(0,index).trim();}
+        }
+
+
+
+    public static void multiplication() throws Exception {
+        str = input.split("\\*");
+        lengthString();
+        int number = Integer.parseInt(str[str.length - 1]);
+        if (number > 10) {throw new Exception("Enter numbers from 1 to 10 inclusive");}
+
+        for (int i = 0; i < number; i++) {result += str[0];}
+    }
+
+    public static void division() throws Exception {
+        str = input.split("/");
+        lengthString();
+        int length = str[0].toCharArray().length;
+        int num = Integer.parseInt(str[str.length - 1]);
+        if (num > 10) {
+            throw new Exception("Enter numbers from 1 to 10 inclusive");}
+        int res = length / num;
+        if (res > 10) {
+            throw new Exception("Enter numbers from 1 to 10 inclusive");}
+        result = str[0].substring(0, length / num);}
+}
+
+
+
+
 
 
 
