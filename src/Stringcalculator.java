@@ -90,7 +90,7 @@ public class Stringcalculator {
         int length = str[0].toCharArray().length;
         int num = Integer.parseInt(str[str.length - 1]);
         if (num > 10) {
-            throw new Exception("Enter numbers from 1 to 10 inclusive");
+            throw new Exception("Enter numbers from 1 to 10 inclusive!!!");
         }
         int res = length / num;
         if (res > 10) {
