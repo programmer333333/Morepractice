@@ -7,7 +7,7 @@ public class Stringcalculator {
     static String result;
     static Scanner sc;
     static String input;
-    static String[] str1;
+
     static String[] str;
 
     public static void main(String[] args) throws Exception {
