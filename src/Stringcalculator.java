@@ -64,7 +64,7 @@ public class Stringcalculator {
         lengthString();
         int index = str[0].indexOf(str[1]);
         if (index == -1) {
-            result = str[0].replace(str[0], "");
+            result = str[0];
         } else {
             result = str[0].substring(0, index).trim();
             result += str[0].substring(index + str[1].length()).trim();
