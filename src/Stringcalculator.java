@@ -67,6 +67,7 @@ public class Stringcalculator {
             result = str[0].replace(str[0], "");
         } else {
             result = str[0].substring(0, index).trim();
+            result += str[0].substring(index + str[1].length()).trim();
         }
     }
 
@@ -90,7 +91,7 @@ public class Stringcalculator {
         int length = str[0].toCharArray().length;
         int num = Integer.parseInt(str[str.length - 1]);
         if (num > 10) {
-            throw new Exception("Enter numbers from 1 to 10 inclusive!!!");
+            throw new Exception("Enter numbers from 1 to 10 inclusive!!!б");
         }
         int res = length / num;
         if (res > 10) {
